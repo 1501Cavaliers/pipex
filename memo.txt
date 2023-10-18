@@ -1,0 +1,3 @@
+MALLOC LIST =
+pipex.path;
+pipex.cmd_opt;
