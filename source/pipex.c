@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 14:28:27 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/18 16:19:57 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/18 16:36:36 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	pip_hub(t_pip *pipex, char **av, char **env)
 		ft_error(ERR_FORK);
 	if (!pid2)
 		child_two(pipex, av, env);
+	close_pipe(pipex);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, NULL, 0);
 	free_parent(pipex);

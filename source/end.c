@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:08:03 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/18 16:19:35 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/18 16:38:54 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	close_pipe(t_pip *pipex)
 {
 	close(pipex->fd[0]);
 	close(pipex->fd[1]);
-	close(pipex->fd_in);
-	close(pipex->fd_out);
 }
 
 int	ft_error(char *str)
@@ -34,16 +32,15 @@ int	ft_error(char *str)
 
 int	free_parent(t_pip *pipex)
 {
-	close_pipe(pipex);
+	close(pipex->fd_in);
+	close(pipex->fd_out);
 	free_tab(pipex->path);
-	free_tab(pipex->cmd_opt);
 	exit (0);
 }
 
 int	free_child(t_pip *pipex)
 {
-	close_pipe(pipex);
-	free_tab(pipex->path);
 	free_tab(pipex->cmd_opt);
+	free(pipex->cmd_path);
 	exit (0);
 }
