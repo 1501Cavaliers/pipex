@@ -18,10 +18,10 @@ MY_OBJECTS = $(MY_SOURCES:.c=.o)
 OBJECTS_DIR = object
 OBJECTS = $(addprefix $(OBJECTS_DIR)/, $(MY_OBJECTS))
 
-MY_BONUS = bonus.c \
-			utils.c \
-			pipex.c \
-			end.c
+MY_BONUS = main_bonus.c \
+			utils_bonus.c \
+			pipex_bonus.c \
+			end_bonus.c
 
 BONUS_DIR = bonus
 BONUS = $(addprefix $(BONUS_DIR)/, $(MY_BONUS))
@@ -30,7 +30,6 @@ MY_OBJECTS_BONUS = $(MY_BONUS:.c=.o)
 OBJECTS_BONUS_DIR = object_bonus
 OBJECTS_BONUS = $(addprefix $(OBJECTS_BONUS_DIR)/, $(MY_OBJECTS_BONUS))
 
-all: $(NAME)
 
 $(NAME) : $(OBJECTS)
 	make -C $(LIBFT_DIR)
@@ -40,8 +39,18 @@ $(OBJECTS_DIR)/%.o: $(SOURCES_DIR)/%.c
 	@mkdir -p $(OBJECTS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+all: $(NAME)
+
+bonus: $(OBJECTS_BONUS)
+	make -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS_BONUS) $(LIB)
+
+$(OBJECTS_BONUS_DIR)/%.o: $(BONUS_DIR)/%.c
+	@mkdir -p $(OBJECTS_BONUS_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -rf $(OBJECTS_DIR)
+	rm -rf $(OBJECTS_DIR) $(OBJECTS_BONUS_DIR)
 	make clean -C $(LIBFT_DIR)
 
 fclean: clean
