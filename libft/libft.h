@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:57:35 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/05 14:41:56 by flavian          ###   ########.fr       */
+/*   Updated: 2023/10/20 16:53:43 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char		ft_putchar(char c);
 
 int			ft_printf(const char *format, ...);
 
-char		*get_next_line(int fd);
+char		*get_next_line(int fd, int x);
 
 char		*ft_strjoin_gnl(char *s1, char *s2);
 

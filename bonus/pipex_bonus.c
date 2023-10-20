@@ -48,18 +48,13 @@ void	child(t_pip pi, char **av, char **env)
 		else
 			set_fd(pi.pipe[2 * pi.idx - 2], pi.pipe[2 * pi.idx + 1]);
 		close_pipes(&pi);
-		write(1, "here\n", 6);
 		pi.cmd_opt = ft_split(av[2 + pi.idx + pi.here_doc], ' ');
-		if (!pi.cmd_opt)
-		{
-			free_child(&pi);
-			ft_error(ERR_CMD);
-		}
 		pi.cmd_path = get_cmd(pi.path, pi.cmd_opt[0]);
 		if (!pi.cmd_path)
 		{
+			msg_pipe(pi.cmd_opt[0]);
 			free_child(&pi);
-			ft_error(ERR_CMD);
+			exit(1);
 		}
 		execve(pi.cmd_path, pi.cmd_opt, env);
 	}

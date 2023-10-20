@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:33:36 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/19 15:30:55 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/20 16:40:31 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 
-# define ERR_INPT "input"
-# define ERR_INFILE "infile"
-# define ERR_OUTFILE "outfile"
-# define ERR_HEREDOC "here_doc"
 # define ERR_GNL "get_next_line"
-# define ERR_PIPE "pipe"
-# define ERR_ENV "env"
-# define ERR_CMD "Command"
+# define ERR_INFILE "Infile"
+# define ERR_OUTFILE "Outfile"
+# define ERR_INPT "Invalid number of arguments.\n"
+# define ERR_PIPE "Pipe"
+# define ERR_ENV "Environment"
+# define ERR_CMD "Command not found: "
+# define ERR_HEREDOC "here_doc"
 
 typedef struct pipex_s
 {
@@ -62,5 +62,7 @@ void	close_pipes(t_pip *pipex);
 void	free_child(t_pip *pipex);
 
 void	child(t_pip pi, char **av, char **env);
+
+void	msg_pipe(char *arg);
 
 #endif

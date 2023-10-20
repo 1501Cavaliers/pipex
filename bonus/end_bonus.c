@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:26:34 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/19 15:27:08 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/20 16:40:34 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	free_pipe(t_pip *pipex)
 void	free_child(t_pip *pipex)
 {
 	free_tab(pipex->cmd_opt);
+	free_tab(pipex->path);
 	free(pipex->cmd_path);
+	free(pipex->pipe);
 }
 
 void	free_parent(t_pip *pipex)

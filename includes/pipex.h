@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:17:41 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/19 15:30:42 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/20 16:23:47 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 
-# define ERR_ARG "arg"
-# define ERR_OPEN "Cannot open file"
+# define ERR_ARG "Invalid number of arguments"
+# define ERR_INFILE "Infile"
+# define ERR_OUTFILE "Outfile"
 # define ERR_PIPE "Pipe"
 # define ERR_FORK "Fork"
 # define ERR_CMD "Cannot find command"
@@ -34,6 +35,8 @@ typedef struct pipex_s
 	char	**arg;
 	char	**path;
 	int		fd[2];
+	pid_t	pid1;
+	pid_t	pid2;
 }			t_pip;
 
 int		ft_error(char *str);
@@ -50,8 +53,10 @@ int		free_parent(t_pip *pipex);
 
 int		free_child(t_pip *pipex);
 
-int		pip_hub(t_pip *pipex, char **av, char **env);
-
 int		msg(char *str);
+
+void	child_one(t_pip pipex, char **av, char **env);
+
+void	child_two(t_pip pipex, char **av, char **env);
 
 #endif

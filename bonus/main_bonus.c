@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:26:19 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/19 15:50:23 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/20 17:24:21 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	get_here_doc(char *av, t_pip *pipex)
 	while (1)
 	{
 		write(1, "heredoc> ", 9);
-		buf = get_next_line(0);
+		buf = get_next_line(0, 0);
 		if (!buf)
 			ft_error(ERR_GNL);
 		if (!ft_strncmp(av, buf, ft_strlen(av)))
@@ -45,6 +45,7 @@ void	get_here_doc(char *av, t_pip *pipex)
 		write(doc, "\n", 1);
 		free(buf);
 	}
+	get_next_line(0, 1);
 	free(buf);
 	close(doc);
 	pipex->fd_in = open (".heredoc_tmp", O_RDONLY);
@@ -92,7 +93,7 @@ int	main(int ac, char **av, char **env)
 	t_pip	pipex;
 
 	if (ac < av_count(av[1], &pipex))
-		ft_error(ERR_INPT);
+		return (msg(ERR_INPT));
 	get_in_out(ac, av, &pipex);
 	pipex.cmd_nb = ac - 3 - pipex.here_doc;
 	pipex.pipe_nb = 2 * (pipex.cmd_nb - 1);
@@ -109,4 +110,5 @@ int	main(int ac, char **av, char **env)
 	close_pipes(&pipex);
 	waitpid(-1, NULL, 0);
 	free_parent(&pipex);
+	return (0);
 }

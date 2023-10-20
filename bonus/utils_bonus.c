@@ -6,11 +6,18 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:26:40 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/19 15:29:22 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/20 13:20:03 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
+
+void	msg_pipe(char *arg)
+{
+	write(2, ERR_CMD, ft_strlen(ERR_CMD));
+	write(2, arg, ft_strlen(arg));
+	write(2, "\n", 1);
+}
 
 void	crash_here_doc(void)
 {

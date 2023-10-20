@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:08:03 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/18 16:38:54 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/20 16:23:12 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	msg(char *str)
 {
 	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
 	return (1);
 }
 
@@ -27,7 +28,7 @@ void	close_pipe(t_pip *pipex)
 int	ft_error(char *str)
 {
 	perror(str);
-	exit (1);
+	exit (0);
 }
 
 int	free_parent(t_pip *pipex)
@@ -41,6 +42,7 @@ int	free_parent(t_pip *pipex)
 int	free_child(t_pip *pipex)
 {
 	free_tab(pipex->cmd_opt);
+	free_tab(pipex->path);
 	free(pipex->cmd_path);
 	exit (0);
 }

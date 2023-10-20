@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:45:14 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/07 17:56:37 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/20 16:54:17 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,18 @@ char	*gnl_read_file(char *mem, int fd)
 	return (mem);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int x)
 {
 	static char	*mem[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1023)
 		return (NULL);
+	if (x == 1)
+	{
+		free(mem[fd]);
+		return (NULL);
+	}
 	mem[fd] = gnl_read_file(mem[fd], fd);
 	if (!mem[fd])
 		return (NULL);
