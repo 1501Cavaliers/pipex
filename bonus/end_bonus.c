@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:26:34 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/20 16:40:34 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/23 11:17:34 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	free_parent(t_pip *pipex)
 int	ft_error(char *str)
 {
 	perror(str);
-	exit (0);
+	exit(1);
 }
 
 int	msg(char *str)

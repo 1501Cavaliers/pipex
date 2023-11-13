@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 14:28:25 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/22 17:51:35 by flavian          ###   ########.fr       */
+/*   Created: 2023/10/22 17:52:56 by flavian           #+#    #+#             */
+/*   Updated: 2023/10/23 11:25:29 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../includes/pipex_bonus.h"
 
-void	free_tab(char **tab)
+int	pi_strcmp(char *s1, char *s2, int n)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
-
-int	is_tab(char **tab)
-{
-	if (!tab[0])
+	if (n == 0)
 		return (0);
-	else
+	if (n != (int)ft_strlen(s2) - 1)
 		return (1);
+	if (!s1 || !s2)
+		return (1);
+	while (s1[i] == s2[i] && i < n - 1 && s1[i] && s2[i])
+		++i;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 int	find_max_int_tab(char **env)

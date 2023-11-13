@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:33:36 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/20 16:40:31 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/23 11:18:24 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@
 # define ERR_GNL "get_next_line"
 # define ERR_INFILE "Infile"
 # define ERR_OUTFILE "Outfile"
-# define ERR_INPT "Invalid number of arguments.\n"
+# define ERR_INPT "Invalid number of arguments or no env.\n"
 # define ERR_PIPE "Pipe"
 # define ERR_ENV "Environment"
 # define ERR_CMD "Command not found: "
 # define ERR_HEREDOC "here_doc"
+# define ERR_PATH "No path"
 
 typedef struct pipex_s
 {
@@ -64,5 +65,7 @@ void	free_child(t_pip *pipex);
 void	child(t_pip pi, char **av, char **env);
 
 void	msg_pipe(char *arg);
+
+int		pi_strcmp(char *s1, char *s2, int n);
 
 #endif

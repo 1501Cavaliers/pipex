@@ -1,6 +1,6 @@
 NAME = pipex
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fPIE
+CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = libft.a
 LIBFT_DIR = libft
@@ -20,6 +20,7 @@ OBJECTS = $(addprefix $(OBJECTS_DIR)/, $(MY_OBJECTS))
 
 MY_BONUS = main_bonus.c \
 			utils_bonus.c \
+			utils_bonus_2.c \
 			pipex_bonus.c \
 			end_bonus.c
 

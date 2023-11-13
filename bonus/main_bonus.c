@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:26:19 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/20 17:24:21 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/10/23 11:13:00 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	get_here_doc(char *av, t_pip *pipex)
 		buf = get_next_line(0, 0);
 		if (!buf)
 			ft_error(ERR_GNL);
-		if (!ft_strncmp(av, buf, ft_strlen(av)))
+		if (!pi_strcmp(av, buf, ft_strlen(av)))
 			break ;
 		write(doc, buf, ft_strlen(buf));
 		write(doc, "\n", 1);
@@ -92,7 +92,7 @@ int	main(int ac, char **av, char **env)
 {
 	t_pip	pipex;
 
-	if (ac < av_count(av[1], &pipex))
+	if (ac < av_count(av[1], &pipex) || !env[0])
 		return (msg(ERR_INPT));
 	get_in_out(ac, av, &pipex);
 	pipex.cmd_nb = ac - 3 - pipex.here_doc;

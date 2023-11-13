@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:17:41 by fserpe            #+#    #+#             */
-/*   Updated: 2023/10/20 16:23:47 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/11/13 17:24:48 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 
-# define ERR_ARG "Invalid number of arguments"
+# define ERR_ARG "Invalid number of arguments or no env"
 # define ERR_INFILE "Infile"
 # define ERR_OUTFILE "Outfile"
 # define ERR_PIPE "Pipe"
 # define ERR_FORK "Fork"
 # define ERR_CMD "Cannot find command"
+# define ERR_PATH "No Path"
 
 typedef struct pipex_s
 {
@@ -35,6 +36,7 @@ typedef struct pipex_s
 	char	**arg;
 	char	**path;
 	int		fd[2];
+	char 	**mt;
 	pid_t	pid1;
 	pid_t	pid2;
 }			t_pip;
